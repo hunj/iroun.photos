@@ -1,17 +1,16 @@
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 
-from gallery.models import Gallery, Photo
+from gallery.models import Album, Photo
 
 
-class GalleryListView(ListView):
-    model = Gallery
+class AlbumListView(ListView):
+    model = Album
 
 
-class GalleryDetailView(DetailView):
-    model = Gallery
+class AlbumDetailView(DetailView):
+    model = Album
 
 
 class PhotoDetailView(DetailView):
     model = Photo
-    
