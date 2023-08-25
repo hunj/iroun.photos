@@ -1,11 +1,11 @@
 <header>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{% url 'index' %}">
-                iroun.photos
+            <a class="navbar-item " href="{% url 'index' %}">
+                [ iroun.photos ]
             </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+            <a role="button" id="nav-toggle" class="navbar-burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarMenu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -15,20 +15,20 @@
 
         <div id="navbarMenu" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="{% url 'index' %}">
-                    Home
-                </a>
-
-                <a class="navbar-item">
+                <a class="navbar-item" href="{% url 'about' %}">
                     About
                 </a>
 
-                <a class="navbar-item">
-                    Portfolio
+                <a class="navbar-item" href="{% url 'photography' %}">
+                    Photography
                 </a>
 
-                <a class="navbar-item">
+                <a class="navbar-item" href="{% url 'gallery_list' %}">
                     Gallery
+                </a>
+
+                <a class="navbar-item" href="{% url 'gallery_list' %}">
+                    Contact
                 </a>
             </div>
 
@@ -36,13 +36,6 @@
                 <a class="navbar-item">
                     <i class="fa fa-instagram mr-2"></i> Instagram
                 </a>
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-light">
-                            Contact
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
