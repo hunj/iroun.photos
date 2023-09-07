@@ -27,3 +27,5 @@ RUN poetry config virtualenvs.create false && \
 
 COPY web /web
 WORKDIR /web
+
+RUN bin/boot.sh

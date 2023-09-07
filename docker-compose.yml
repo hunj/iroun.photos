@@ -12,12 +12,19 @@ services:
       - ./.env
   db:
     image: postgres:15
+    restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=django
-      - POSTGRES_PASSWORD=django_pass
+      - PGUSER=postgres
+      - POSTGRES_USER=postgres
       - POSTGRES_DB=django
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d irounphotos_db -U iroun"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
 
 volumes:
   postgres_data:
