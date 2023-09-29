@@ -8,13 +8,13 @@ services:
     depends_on:
       - web
     volumes:
-      - static_volume:/web/static
+      - static_volume:/web/staticfiles
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8001
     volumes:
       - ./web/:/web
-      - static_volume:/web/static
+      - static_volume:/web/staticfiles
     expose:
       - 8001
     env_file:
