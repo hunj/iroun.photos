@@ -26,6 +26,7 @@ RUN poetry config virtualenvs.create false && \
     poetry install
 
 COPY web /web
+RUN mkdir -p /web/static
 WORKDIR /web
 
 CMD bin/boot.sh

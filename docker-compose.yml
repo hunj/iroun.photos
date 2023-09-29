@@ -7,11 +7,14 @@ services:
       - 8000:80
     depends_on:
       - web
+    volumes:
+      - static_volume:/web/static
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8001
     volumes:
       - ./web/:/web
+      - static_volume:/web/static
     expose:
       - 8001
     env_file:
@@ -34,3 +37,4 @@ services:
 
 volumes:
   postgres_data:
+  static_volume:
