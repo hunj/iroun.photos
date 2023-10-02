@@ -9,6 +9,7 @@ services:
       - web
     volumes:
       - static_volume:/web/staticfiles
+      - uploaded_files:/web/uploads
   web:
     build: .
     command: /bin/bash /web/bin/boot.sh
@@ -16,6 +17,7 @@ services:
     volumes:
       - ./web/:/web
       - static_volume:/web/staticfiles
+      - uploaded_files:/web/uploads
     expose:
       - 8001
     env_file:
@@ -42,3 +44,4 @@ services:
 volumes:
   postgres_data:
   static_volume:
+  uploaded_files:
