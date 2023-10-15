@@ -6,7 +6,7 @@ from gallery.helpers import photo_upload_directory_name, get_exif_data
 class Album(BaseModel):
     name = models.CharField(max_length=256)
     published = models.BooleanField(default=False)
-    cover = models.OneToOneField('Photo', related_name='cover', on_delete=models.SET_NULL, null=True)
+    cover = models.OneToOneField('Photo', related_name='cover', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.name
