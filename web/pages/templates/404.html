@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section is-large">
+    <div class="container">
+        <div class="content has-text-centered">
+        <h1>Oops!</h1>
+        <p class="mb-6">Cannot find the page you requested.</p>
+        <a href="{% url 'index' %}">≪ Return to Home</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
