@@ -9,7 +9,7 @@ services:
     depends_on:
       - api
     volumes:
-      - static_volume:/api/staticfiles
+      - static_volume:/staticfiles
       - uploaded_files:/api/uploads
   api:
     build: .
@@ -17,7 +17,7 @@ services:
     restart: always
     volumes:
       - ./api/:/api
-      - static_volume:/api/staticfiles
+      - static_volume:/staticfiles
       - uploaded_files:/api/uploads
     expose:
       - 8001
