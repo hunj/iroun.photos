@@ -19,7 +19,7 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('', include('pages.urls')),
+    # path('', include('pages.urls')),
     path('hunj-admin/', admin.site.urls),
     path('gallery/', include('gallery.urls')),
 ]
