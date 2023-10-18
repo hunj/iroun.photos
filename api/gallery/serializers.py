@@ -5,9 +5,11 @@ from gallery.models import Album, Photo
 
 
 class PhotoSerializer(serializers.ModelSerializer):
+    url = serializers.CharField(source='file.url', read_only=True)
+
     class Meta:
         model = Photo
-        fields = ['uuid', 'file', 'visible']
+        fields = ['uuid', 'url', 'visible']
 
 
 class AlbumListSerializer(serializers.ModelSerializer):
