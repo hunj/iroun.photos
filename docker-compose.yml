@@ -1,21 +1,21 @@
 version: '3.8'
 
 services:
-  # nginx:
-  #   build: ./nginx
-  #   restart: always
-  #   ports:
-  #     - 8000:80
-  #   depends_on:
-  #     - api
-  #   volumes:
-  #     - static_volume:/staticfiles
-  #     - uploaded_files:/api/uploads
   web:
     build: ./web
     restart: always
     ports:
       - 3000:3000
+    depends_on:
+      - api
+    volumes:
+      - static_volume:/staticfiles
+      - uploaded_files:/uploads
+  api-nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - 8000:80
     depends_on:
       - api
     volumes:
