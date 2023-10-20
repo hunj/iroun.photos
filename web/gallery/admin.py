@@ -10,7 +10,8 @@ from gallery.views import PhotoMultiUploadAdminView
 class PhotoInline(admin.TabularInline):
     model = Photo
     fields = ("file", "preview", "visible",)
-    readonly_fields = ("preview",)
+    readonly_fields = ("file", "preview",)
+    ordering = ("created_at",)
     extra = 0
 
     @admin.display()
@@ -31,13 +32,16 @@ class PhotoAdmin(admin.ModelAdmin):
         return format_html(f"<img src='{obj.file.url}' height='200'>")
 
     fields = ["album", "file", "visible"]
+    readonly_fields = ["file"]
     list_display = ['uuid', 'preview',]
+    ordering = ["album__created_at", "album", "created_at"]
 
 
 @admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
     form = AlbumAdminForm
     list_display = ['name', 'preview', 'upload',]
+    fields = ["name", "published", "cover",]
     inlines = [PhotoInline]
 
     @admin.display()
