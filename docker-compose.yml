@@ -7,18 +7,18 @@ services:
     ports:
       - 8000:80
     depends_on:
-      - api
+      - web
     volumes:
-      - static_volume:/staticfiles
-      - uploaded_files:/api/uploads
-  api:
+      - static_volume:/web/staticfiles
+      - uploaded_files:/web/uploads
+  web:
     build: .
-    command: /bin/bash /api/bin/boot.sh
+    command: /bin/bash /web/bin/boot.sh
     restart: always
     volumes:
-      - ./api/:/api
-      - static_volume:/staticfiles
-      - uploaded_files:/api/uploads
+      - ./web/:/web
+      - static_volume:/web/staticfiles
+      - uploaded_files:/web/uploads
     expose:
       - 8001
     env_file:

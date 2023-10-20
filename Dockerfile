@@ -25,8 +25,8 @@ COPY ./poetry.lock ./
 RUN poetry config virtualenvs.create false && \
     poetry install
 
-COPY api /api
-RUN mkdir -p /api/static
-WORKDIR /api
+COPY web /web
+RUN mkdir -p /web/static
+WORKDIR /web
 
 CMD bin/boot.sh
