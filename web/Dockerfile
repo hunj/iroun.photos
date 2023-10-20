@@ -1,17 +1,25 @@
-FROM node:20 AS build
+# Use node alpine as it's a small node image
+FROM node:alpine
 
+# Create the directory on the node image 
+# where our Next.js app will live
+RUN mkdir -p /app
+
+# Set /app as the working directory
 WORKDIR /app
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
-RUN npm ci
+
+# Copy package.json and package-lock.json
+# to the /app working directory
+COPY package*.json /app
+
+# Install dependencies in /app
+RUN yarn install
+
+# Copy the rest of our Next.js folder into /app
 COPY . /app
-CMD [ "npm", "start" ]
-RUN npm run build
 
+# Ensure port 3000 is accessible to our system
+EXPOSE 3000
 
-FROM nginx:alpine
-COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
-WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
-COPY --from=build /app/build .
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# Run yarn dev, as we would via the command line 
+CMD ["yarn", "dev"]
