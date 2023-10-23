@@ -6,8 +6,6 @@ import sys
 
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
-from gallery.models import Photo
-
 
 THUMBNAIL_SIZE = (512, 512)
 THUMBNAIL_FORMAT = "JPEG"
@@ -23,7 +21,7 @@ def thumbnail_upload_directory_name(instance, filename):
     return "thumbnails/" + str(instance.uuid) + pathlib.Path(filename).suffix.lower()
 
 
-def create_thumbnail_file(photo: Photo) -> InMemoryUploadedFile:
+def create_thumbnail_file(photo) -> InMemoryUploadedFile:
     original_image = Image.open(photo.file.path)
     image = original_image.copy()
     image.thumbnail(THUMBNAIL_SIZE, Image.LANCZOS)
