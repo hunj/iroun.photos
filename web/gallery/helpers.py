@@ -1,10 +1,47 @@
 import pathlib
 from PIL import Image, ExifTags
 from fractions import Fraction
+from io import BytesIO
+import sys
+
+from django.core.files.uploadedfile import InMemoryUploadedFile
+
+from gallery.models import Photo
+
+
+THUMBNAIL_SIZE = (512, 512)
+THUMBNAIL_FORMAT = "JPEG"
+THUMBNAIL_CONTENT_TYPE = "image/jpeg"
+THUMBNAIL_QUALITY = 95
 
 
 def photo_upload_directory_name(instance, filename):
     return "photos/" + str(instance.uuid) + pathlib.Path(filename).suffix.lower()
+
+
+def thumbnail_upload_directory_name(instance, filename):
+    return "thumbnails/" + str(instance.uuid) + pathlib.Path(filename).suffix.lower()
+
+
+def create_thumbnail_file(photo: Photo) -> InMemoryUploadedFile:
+    original_image = Image.open(photo.file.path)
+    image = original_image.copy()
+    image.thumbnail(THUMBNAIL_SIZE, Image.LANCZOS)
+
+    image_bytes = BytesIO()
+    image.save(
+        image_bytes,
+        format=THUMBNAIL_FORMAT,
+        quality=THUMBNAIL_QUALITY
+    )
+    return InMemoryUploadedFile(
+        image_bytes,
+        'ImageField',
+        thumbnail_upload_directory_name(photo, photo.file.name),
+        THUMBNAIL_CONTENT_TYPE,
+        sys.getsizeof(image_bytes),
+        None
+    )
 
 
 def get_exif_data(photo):
