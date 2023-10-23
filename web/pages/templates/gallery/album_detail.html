@@ -20,12 +20,12 @@
 </section>
 
 <section class="section">
-    <div class="container is-fullhd">
+    <div class="container is-fluid">
 
         <div class="columns is-multiline">
             {% for photo in photos %}
             <div class="column is-mobile is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
-                <a href="{% url 'gallery_photo_details' object.uuid photo.uuid %}"><img class="image" src="{{ photo.thumbnail.url }}"></a>
+                <a href="{% url 'gallery_photo_details' object.uuid photo.uuid %}"><img class="image mx-auto" src="{{ photo.thumbnail.url }}"></a>
             </div>
 
             {% empty %}
