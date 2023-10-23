@@ -7,6 +7,10 @@ def photo_upload_directory_name(instance, filename):
     return "photos/" + str(instance.uuid) + pathlib.Path(filename).suffix.lower()
 
 
+def thumbnail_upload_directory_name(instance, filename):
+    return "thumbnails/" + str(instance.uuid) + pathlib.Path(filename).suffix.lower()
+
+
 def get_exif_data(photo):
     img = Image.open(photo.file)
     img.verify()

@@ -15,6 +15,7 @@ class Album(BaseModel):
 class Photo(BaseModel):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     file = models.ImageField(upload_to=photo_upload_directory_name)
+    thumbnail = models.ImageField(upload_to=thumbnail_upload_directory_name, blank=True)
     visible = models.BooleanField(default=True)
 
     def __str__(self):
