@@ -54,3 +54,36 @@ class Photo(BaseModel):
             lens_info = "Unknown Lens"
 
         return f"{exif['FocalLength']}mm ({lens_info})"
+
+
+class Person(BaseModel):
+    name = models.CharField(max_length=64)
+    slug = models.SlugField(default="", null=False)
+    photos = models.ManyToManyField(Photo)
+
+    def save(self, *args, **kwargs):
+        if not self.name:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+
+class Location(BaseModel):
+    name = models.CharField(max_length=64)
+    slug = models.SlugField(default="", null=False)
+    albums = models.ManyToManyField(Album)
+
+    def save(self, *args, **kwargs):
+        if not self.name:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+
+class Event(BaseModel):
+    name = models.CharField(max_length=64)
+    slug = models.SlugField(default="", null=False)
+    albums = models.ManyToManyField(Album)
+
+    def save(self, *args, **kwargs):
+        if not self.name:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
