@@ -22,7 +22,7 @@ def thumbnail_upload_directory_name(instance, filename):
 
 
 def create_thumbnail_file(photo) -> InMemoryUploadedFile:
-    original_image = Image.open(photo.file.path)
+    original_image = Image.open(photo.file)
     image = original_image.copy()
     image.thumbnail(THUMBNAIL_SIZE, Image.LANCZOS)
 
