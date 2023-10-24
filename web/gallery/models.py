@@ -58,32 +58,41 @@ class Photo(BaseModel):
 
 class Person(BaseModel):
     name = models.CharField(max_length=64)
-    slug = models.SlugField(default="", null=False)
+    slug = models.SlugField(default="", null=False, blank=True)
     photos = models.ManyToManyField(Photo)
 
+    def __str__(self):
+        return self.name
+
     def save(self, *args, **kwargs):
-        if not self.name:
+        if self.name:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
 
 class Location(BaseModel):
     name = models.CharField(max_length=64)
-    slug = models.SlugField(default="", null=False)
+    slug = models.SlugField(default="", null=False, blank=True)
     albums = models.ManyToManyField(Album)
 
+    def __str__(self):
+        return self.name
+
     def save(self, *args, **kwargs):
-        if not self.name:
+        if self.name:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
 
 class Event(BaseModel):
     name = models.CharField(max_length=64)
-    slug = models.SlugField(default="", null=False)
+    slug = models.SlugField(default="", null=False, blank=True)
     albums = models.ManyToManyField(Album)
 
+    def __str__(self):
+        return self.name
+
     def save(self, *args, **kwargs):
-        if not self.name:
+        if self.name:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
