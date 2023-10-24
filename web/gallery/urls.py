@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
     path("", views.AlbumListView.as_view(), name="gallery_list"),
-    path("<uuid:gallery_uuid>", views.AlbumDetailView.as_view(), name="gallery_details"),
-    path("<uuid:gallery_uuid>/photo/<uuid:photo_uuid>", views.PhotoDetailView.as_view(), name="gallery_photo_details"),
+    path("<slug:gallery_slug>", views.AlbumDetailView.as_view(), name="gallery_details"),
+    path("<slug:gallery_slug>/<uuid:photo_uuid>", views.PhotoDetailView.as_view(), name="gallery_photo_details"),
 ]

@@ -14,7 +14,7 @@ class AlbumListView(ListView):
 
 class AlbumDetailView(DetailView):
     model = Album
-    pk_url_kwarg = "gallery_uuid"
+    slug_url_kwarg = "gallery_slug"
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)

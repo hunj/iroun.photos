@@ -9,14 +9,14 @@
             <div class="column is-one-quarter-fullhd is-one-third-desktop is-half-tablet">
                 <div class="card">
                     <div class="card-image">
-                        <a href="{% url 'gallery_details' object.uuid %}">
+                        <a href="{% url 'gallery_details' object.slug %}">
                             <figure class="image">
                                 <img src="{{ object.cover.thumbnail.url }}">
                             </figure>
                         </a>
                     </div>
                     <div class="card-content">
-                        <p><a href="{% url 'gallery_details' object.uuid %}">{{ object.name }}</a></p>
+                        <p><a href="{% url 'gallery_details' object.slug %}">{{ object.name }}</a></p>
                         <small>{{ object.created_at|date }}</small>
                     </div>
                 </div>
