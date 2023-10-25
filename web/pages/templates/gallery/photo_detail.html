@@ -6,8 +6,8 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
                 <li><a href="{% url 'gallery_list' %}">Gallery</a></li>
-                <li><a href="{% url 'gallery_details' photo.album.uuid %}">{{ photo.album }}</a></li>
-                <li class="is-active"><a href="{% url 'gallery_photo_details' photo.album.uuid photo.uuid %}"
+                <li><a href="{% url 'gallery_details' photo.album.slug %}">{{ photo.album }}</a></li>
+                <li class="is-active"><a href="{% url 'gallery_photo_details' photo.album.slug photo.uuid %}"
                         aria-current="page">{{ photo.uuid }}</a></li>
             </ul>
         </nav>
@@ -47,7 +47,7 @@
 
 
         <div class="has-text-centered">
-            <a href="{% url 'gallery_details' photo.album.uuid %}">
+            <a href="{% url 'gallery_details' photo.album.slug %}">
                 ≪ Back
             </a>
         </div>
