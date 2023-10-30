@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from django.views.generic import ListView, DetailView
-from gallery.models import Album, Photo
+from gallery.models import Album, Photo, Person
 
 
 class AlbumListView(ListView):
@@ -47,3 +47,21 @@ class PhotoMultiUploadAdminView(PermissionRequiredMixin, DetailView):
             p = Photo(file=file, album=current_album)
             p.save()
         return HttpResponseRedirect(reverse("admin:gallery_album_change", args=[current_album.pk]))
+
+
+class TaggedListView(DetailView):
+    model = Person
+    slug_url_kwarg = "person_slug"
+    context_object_name = "person"
+
+
+# class LocationListView(DetailView):
+#     model = Person
+#     slug_url_kwarg = "person_slug"
+#     context_object_name = "person"
+
+
+# class EventListView(DetailView):
+#     model = Person
+#     slug_url_kwarg = "person_slug"
+#     context_object_name = "person"
