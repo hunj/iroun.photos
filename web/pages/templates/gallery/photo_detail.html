@@ -29,7 +29,7 @@
                 <ul>
                     {% for person in photo.person_set.all %}
                         <li>
-                            <a href="">@{{ person.slug }}</a>
+                            <a href="{% url 'search_by_tag' person.slug %}">@{{ person.slug }}</a>
                         </li>
                     {% endfor %}
                 </ul>
