@@ -1,0 +1,43 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+<section class="hero has-background-light">
+    <div class="hero-body">
+
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li>Tagged</li>
+                <li class="is-active"><a href="{% url 'search_by_tag' person.slug %}" aria-current="page">{{ person.name }}</a></li>
+            </ul>
+        </nav>
+
+        <h1 class="title"><a href="{% url 'search_by_tag' person.slug %}">@{{ person.slug }}</a></h1>
+        <p class="subtitle">
+            {{ person.photos.all.count }} photo(s) of {{ person.name }}
+        </p>
+
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-fluid">
+
+        <div class="columns is-multiline">
+            {% for photo in person.photos.all %}
+            <div class="column is-mobile is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
+                <a href="{% url 'gallery_photo_details' person.uuid photo.uuid %}"><img class="image mx-auto"
+                        src="{{ photo.thumbnail.url }}"></a>
+            </div>
+
+            {% empty %}
+            <div class="column has-text-centered">
+                Empty!
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
