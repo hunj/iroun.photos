@@ -1,0 +1,40 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<section class="hero has-background-light">
+    <div class="hero-body">
+
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="{% url 'gallery_list' %}">Gallery</a></li>
+                <li class="is-active"><a href="{% url 'gallery_details' object.slug %}" aria-current="page">{{ object.name }}</a></li>
+            </ul>
+        </nav>
+
+        <h1 class="title"><a href="{% url 'gallery_details' object.slug %}">{{ object.name }}</a></h1>
+        <p class="subtitle">
+            Created {{ object.created_at|date }}
+        </p>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-fluid">
+
+        <div class="columns is-multiline">
+            {% for photo in photos %}
+            <div class="column is-mobile is-one-third-tablet is-one-quarter-desktop is-one-fifth-fullhd">
+                <a href="{% url 'gallery_photo_details' object.uuid photo.uuid %}"><img class="image mx-auto" src="{{ photo.thumbnail.url }}"></a>
+            </div>
+
+            {% empty %}
+            <div class="column has-text-centered">
+                Empty!
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

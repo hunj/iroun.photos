@@ -1,0 +1,13 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+
+{{ object }}
+
+<form enctype="multipart/form-data" action="{% url 'admin:album_photo_multiupload' object.uuid %}" method="POST">
+    {% csrf_token %}
+    <input multiple type="file" name="photos">
+    <input type="submit" value="Upload">
+</form>
+
+{% endblock %}

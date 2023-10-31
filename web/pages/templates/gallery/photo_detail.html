@@ -1,0 +1,56 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<section class="hero has-background-light">
+    <div class="hero-body">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="{% url 'gallery_list' %}">Gallery</a></li>
+                <li><a href="{% url 'gallery_details' photo.album.slug %}">{{ photo.album }}</a></li>
+                <li class="is-active"><a href="{% url 'gallery_photo_details' photo.album.slug photo.uuid %}"
+                        aria-current="page">{{ photo.uuid }}</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <figure class="image">
+            <a href="{{ photo.file.url }}" target="_blank">
+                <img src="{{ photo.file.url }}">
+            </a>
+        </figure>
+
+        <div class="columns">
+            {% if photo.person_set.exists %}
+            <div class="column">
+                <p class="has-text-bold">Tagged</p>
+                <ul>
+                    {% for person in photo.person_set.all %}
+                        <li>
+                            <a href="{% url 'search_by_tag' person.slug %}">@{{ person.slug }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <div class="column">
+                <p><strong>Photo Data</strong></p>
+                <ul>
+                    <li>{{ photo.exif_data.Model }}</li>
+                    <li>{{ photo.exif_data_exposure }}</li>
+                    <li>{{ photo.exif_data_lens }}</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="has-text-centered">
+            <a href="{% url 'gallery_details' photo.album.slug %}">
+                ≪ Back
+            </a>
+        </div>
+</section>
+
+{% endblock %}
