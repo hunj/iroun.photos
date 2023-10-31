@@ -26,7 +26,7 @@ services:
       - uploaded_files:/uploads
   api:
     build: .
-    command: /bin/bash /web/bin/boot.sh
+    command: /bin/bash /api/bin/boot.sh
     restart: always
     volumes:
       - ./api:/api
