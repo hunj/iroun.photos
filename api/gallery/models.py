@@ -25,7 +25,7 @@ class Album(BaseModel):
 
 
 class Photo(BaseModel):
-    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name="photos")
     file = models.ImageField(upload_to=photo_upload_directory_name)
     thumbnail = models.ImageField(upload_to=thumbnail_upload_directory_name, blank=True)
     visible = models.BooleanField(default=True)
@@ -59,7 +59,7 @@ class Photo(BaseModel):
 class Person(BaseModel):
     name = models.CharField(max_length=64)
     slug = models.SlugField(default="", null=False, blank=True)
-    photos = models.ManyToManyField(Photo)
+    photos = models.ManyToManyField(Photo, related_name="tagged")
 
     def __str__(self):
         return self.name
@@ -73,7 +73,7 @@ class Person(BaseModel):
 class Location(BaseModel):
     name = models.CharField(max_length=64)
     slug = models.SlugField(default="", null=False, blank=True)
-    albums = models.ManyToManyField(Album)
+    albums = models.ManyToManyField(Album, related_name="locations")
 
     def __str__(self):
         return self.name
@@ -87,7 +87,7 @@ class Location(BaseModel):
 class Event(BaseModel):
     name = models.CharField(max_length=64)
     slug = models.SlugField(default="", null=False, blank=True)
-    albums = models.ManyToManyField(Album)
+    albums = models.ManyToManyField(Album, related_name="events")
 
     def __str__(self):
         return self.name

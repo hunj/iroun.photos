@@ -10,7 +10,7 @@ from gallery.models import (
     Location,
     Event,
 )
-from gallery.views import PhotoMultiUploadAdminView
+from gallery.admin_views import PhotoMultiUploadAdminView
 
 
 @admin.register(Person)
