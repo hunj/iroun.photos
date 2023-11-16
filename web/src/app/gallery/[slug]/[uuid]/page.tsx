@@ -31,8 +31,8 @@ export default async function Page({ params }: { params: { slug: string, uuid: s
                 </div>
             </div>
             <div className="container mx-auto h-full">
-                <Link href={ `http://api-nginx` + photo.url } target="_blank">
-                    <Image alt={ photo.uuid } src={`http://api-nginx` + photo.url } width={2560} height={2560} style={{ height: "100%", width: "auto" }} />
+                <Link href={ `http://localhost:8000` + photo.url } target="_blank">
+                    <Image alt={photo.uuid} src={`http://api-nginx` + photo.url } width={2560} height={2560} style={{ height: "100%", width: "auto" }} />
                 </Link>
             </div>
         </section>

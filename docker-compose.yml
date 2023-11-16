@@ -4,16 +4,18 @@ services:
   web:
     build: ./web
     restart: always
-    command: yarn dev
+    # command: yarn dev
     ports:
       - 3000:3000
     depends_on:
       - api
     volumes:
       - ./web:/app
-      - uploaded_files:/uploads
       - /app/node_modules
       - /app/.next
+    environment:
+      NODE_ENV: development
+
   api-nginx:
     build: ./nginx
     restart: always
@@ -27,7 +29,8 @@ services:
   redis:
     image: redis:latest
     ports:
-      - "6379:6379"
+      - 6379:6379
+
   api:
     build: .
     command: /bin/bash /api/bin/boot.sh
@@ -43,6 +46,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
   db:
     image: postgres:15
     restart: always
@@ -58,6 +62,7 @@ services:
       interval: 1s
       timeout: 5s
       retries: 10
+
 
 volumes:
   postgres_data:
