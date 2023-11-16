@@ -16,4 +16,4 @@ python manage.py migrate
 
 # Start Gunicorn
 echo "Starting Gunicorn..."
-gunicorn base_app.wsgi:application --bind 0.0.0.0:8001 --reload
+gunicorn core.wsgi:application --bind 0.0.0.0:8001 --reload
