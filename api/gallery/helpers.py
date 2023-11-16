@@ -1,5 +1,5 @@
 import pathlib
-from PIL import Image, ExifTags
+from PIL import Image, ExifTags, TiffImagePlugin
 from fractions import Fraction
 from io import BytesIO
 import sys
@@ -46,23 +46,19 @@ def get_exif_data(photo):
     img = Image.open(photo.file)
     img.verify()
     exif_data = img._getexif()
-    exif = {ExifTags.TAGS.get(k, k): v for k, v in exif_data.items()}
+    exif = {
+        ExifTags.TAGS[k]: Fraction(v) if isinstance(v, TiffImagePlugin.IFDRational) else v
+        for k, v in exif_data.items()
+        if k in ExifTags.TAGS
+    }
 
-    exif_fields = [
-        'Model',  # camera
-        'FocalLength',
-        'ExposureTime',
-        'FNumber',
-        'ISOSpeedRatings',
-        'LensModel',
-    ]
-
-    filtered_exif = dict(filter(lambda x: x[0] in exif_fields, exif.items()))
-
-    if focal_length := filtered_exif.get('FocalLength'):
-        filtered_exif['FocalLength'] = int(focal_length)
-
-    if shutter_speed := filtered_exif.get('ExposureTime'):
-        filtered_exif['ExposureTime'] = Fraction(shutter_speed)
+    filtered_exif = {
+        'camera': exif['Model'],
+        'focal_length': f"{int(exif['FocalLength'])}mm",
+        'shutter_speed': f"{exif['ExposureTime']}s",
+        'aperture': f"f{float(exif['FNumber'])}",
+        'iso': str(exif['ISOSpeedRatings']),
+        'lens_info': exif['LensModel'] if exif['LensModel'] != '0.0 mm f/0.0' else "Unknown Lens",
+    }
 
     return filtered_exif
