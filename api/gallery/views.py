@@ -11,8 +11,8 @@ class AlbumListAPIView(ListAPIView):
 
 class AlbumRetrieveAPIView(RetrieveAPIView):
     queryset = Album.objects.all()
-    lookup_url_kwarg = "album_uuid"
-    lookup_field = "uuid"
+    lookup_url_kwarg = "album_slug"
+    lookup_field = "slug"
     serializer_class = AlbumRetrieveSerializer
 
 
