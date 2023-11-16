@@ -1,5 +1,7 @@
 # Use node alpine as it's a small node image
-FROM node:alpine
+FROM node:alpine as build
+
+ENV NEXT_TELEMETRY_DISABLED 1
 
 # Create the directory on the node image 
 # where our Next.js app will live
