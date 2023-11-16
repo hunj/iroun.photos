@@ -5,7 +5,6 @@ from gallery.helpers import (
     photo_upload_directory_name,
     thumbnail_upload_directory_name,
     create_thumbnail_file,
-    get_exif_data,
 )
 
 
@@ -39,21 +38,6 @@ class Photo(BaseModel):
 
         self.thumbnail = create_thumbnail_file(self)
         super().save(*args, **kwargs)
-
-    def exif_data(self):
-        return get_exif_data(self.file)
-
-    def exif_data_exposure(self):
-        exif = self.exif_data()
-        return f"{exif['ExposureTime']} sec at 𝑓/{exif['FNumber']}, ISO {exif['ISOSpeedRatings']}"
-
-    def exif_data_lens(self):
-        exif = self.exif_data()
-        lens_info = exif.get('LensModel')
-        if not lens_info or lens_info == "0.0 mm f/0.0":
-            lens_info = "Unknown Lens"
-
-        return f"{exif['FocalLength']}mm ({lens_info})"
 
 
 class Person(BaseModel):
