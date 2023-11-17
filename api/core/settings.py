@@ -24,7 +24,7 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:3000']
 SECRET_KEY = os.environ.get('SECRET_KEY', 'deez nuts')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ.get("DEBUG") == "1" else False
 
 ALLOWED_HOSTS = ['*']
 
