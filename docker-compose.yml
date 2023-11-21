@@ -16,12 +16,13 @@ services:
     environment:
       NODE_ENV: development
 
-  api-nginx:
+  nginx:
     build: ./nginx
     restart: always
     ports:
       - 8000:80
     depends_on:
+      - api
       - web
     volumes:
       - static_volume:/staticfiles

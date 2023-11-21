@@ -9,7 +9,7 @@ export default async function Page() {
     const albums = await data.map((album: Album) =>
         <Link key={album.uuid} href={`/gallery/${album.slug}`} className="relative block group mb-4">
             <Image className="group-hover:opacity-50"
-            src={"http://api-nginx" + album.cover} alt={album.name} width={512} height={512} style={{ height: "auto", width: "100%" }} />
+            src={"http://nginx" + album.cover} alt={album.name} width={512} height={512} style={{ height: "auto", width: "100%" }} />
             <div className="absolute inset-0 transition-all transform opacity-0 group-hover:opacity-100">
                 <div className="flex flex-col h-full p-3">
                     <p className="grow font-semibold text-xl text-center justify-self-center">{album.name}</p>

@@ -7,7 +7,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'http',
-                hostname: 'api-nginx',
+                hostname: 'nginx',
                 port: '',
                 pathname: '/uploads/**',
             },

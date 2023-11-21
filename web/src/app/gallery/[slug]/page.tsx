@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <div key={photo.uuid} className="mb-4">
             <Link href={`/gallery/${params.slug}/${photo.uuid}`}>
                 <div className="h-100 w-100">
-                    <Image className="hover:opacity-80" src={"http://api-nginx" + photo.thumbnail} alt={photo.uuid} width={512} height={512} style={{ height: "auto", width: "100%" }} />
+                    <Image className="hover:opacity-80" src={"http://nginx" + photo.thumbnail} alt={photo.uuid} width={512} height={512} style={{ height: "auto", width: "100%" }} />
                 </div>
             </Link>
         </div>
