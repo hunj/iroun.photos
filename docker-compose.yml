@@ -26,10 +26,14 @@ services:
     volumes:
       - static_volume:/staticfiles
       - uploaded_files:/uploads
+
   redis:
     image: redis:latest
-    ports:
-      - 6379:6379
+    restart: always
+    expose:
+      - 6379
+    volumes:
+      - redis_data:/data
 
   api:
     build: .
@@ -66,5 +70,6 @@ services:
 
 volumes:
   postgres_data:
+  redis_data:
   static_volume:
   uploaded_files:
