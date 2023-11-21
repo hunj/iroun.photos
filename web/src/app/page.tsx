@@ -1,8 +1,8 @@
-export default function Home() {
+export default function Page() {
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold">iroun.photos</h1>
+    <section className="container mx-auto py-8">
+      <h1 className="font-semibold text-3xl mb-3">iroun.photos</h1>
       <h2 className="text-xl">event/portrait/cosplay photographer</h2>
-    </div>
+    </section>
   );
 }

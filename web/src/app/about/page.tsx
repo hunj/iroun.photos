@@ -1,6 +1,6 @@
 export default function Page() {
     return (
-        <div className="container mx-auto py-8 text-lg">
+        <section className="container mx-auto py-8 text-lg">
             <h1 className="font-semibold text-3xl mb-3">
                 About me
             </h1>
@@ -23,6 +23,6 @@ export default function Page() {
                 <li><a className="text-blue-400" href="https://amzn.to/46eHJor" target="_blank">Neewer Collapsible Reflector</a></li>
             </ul>
             <p className="text-xs">* These are affiliate links and if you buy them through the link, it benefits me.</p>
-        </div>
+        </section>
     );
 }

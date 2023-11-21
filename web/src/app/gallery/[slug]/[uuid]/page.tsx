@@ -27,7 +27,8 @@ export default async function Page({ params }: { params: { slug: string, uuid: s
             <div className="bg-gray-100 mb-3">
                 <div className="container py-12 mx-auto text-center">
                     <h1 className="font-bold text-lg">
-                        <Link href={`/gallery/${params.slug}`} className="text-blue-400">{ photo.album.name }</Link> / {photo.uuid}</h1>
+                        <Link href={`/gallery/${params.slug}`} className="text-blue-400">{ photo.album.name }</Link> / {photo.uuid}
+                    </h1>
                 </div>
             </div>
             <div className="container mx-auto h-full">
