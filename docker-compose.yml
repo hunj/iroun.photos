@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   web:
-    build: 
-      context: ./web
-      dockerfile: dev.Dockerfile
+    build: ./web
     restart: always
     # command: yarn dev
     ports:
@@ -18,8 +16,7 @@ services:
     links:
       - api
     environment:
-      ENV_VARIABLE: ${ENV_VARIABLE}
-      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+      NODE_ENV: production
 
   nginx:
     build: ./nginx
