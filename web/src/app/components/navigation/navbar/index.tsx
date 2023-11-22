@@ -5,7 +5,7 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 const Navbar = () => {
     return (
-        <div className="w-full bg-teal-400 sticky top-0">
+        <div className="w-full bg-teal-400 top-0">
             <div className="container mx-auto h-full">
                 <div className="flex justify-between items-center h-full">
                     <Link className="text-white text-xl font-bold p-3" href="/">[ iroun.photos ]</Link>

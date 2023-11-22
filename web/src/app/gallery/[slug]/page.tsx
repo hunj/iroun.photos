@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import PhotoModal from "../../components/gallery/modal";
+
+
 type Photo = {
     uuid: string;
     url: string;
@@ -27,12 +30,25 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     const galleryItems = await album.photos.map((photo: Photo) =>
         <div key={photo.uuid} className="mb-4">
-            <Link href={`/gallery/${params.slug}/${photo.uuid}`}>
-                <div className="h-100 w-100">
-                    <Image className="hover:opacity-80" src={"http://nginx" + photo.thumbnail} alt={photo.uuid} width={512} height={512} style={{ height: "auto", width: "100%" }} />
-                </div>
-            </Link>
+        <PhotoModal 
+            gallerySlug={params.slug}
+            thumb={"http://nginx" + photo.thumbnail}
+            thumbWidth={512}
+            thumbHeight={512}
+            thumbAlt={photo.uuid}
+            imageUuid={photo.uuid}
+            imageUrl={photo.url}
+            imageWidth={2560}
+            imageHeight={2560}
+        />
         </div>
+        // <div key={photo.uuid} className="mb-4">
+        //     <Link href={`/gallery/${params.slug}/${photo.uuid}`}>
+        //         <div className="h-100 w-100">
+        //             <Image className="hover:opacity-80" src={"http://nginx" + photo.thumbnail} alt={photo.uuid} width={512} height={512} style={{ height: "auto", width: "100%" }} />
+        //         </div>
+        //     </Link>
+        // </div>
     );
 
     return (
