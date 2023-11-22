@@ -9,7 +9,7 @@ type Photo = {
 }
 
 async function getPhotos(gallerySlug: string) {
-    const res = await fetch(`http://api:8001/gallery/${gallerySlug}`)
+    const res = await fetch(`http://api:8001/gallery/${gallerySlug}`, { cache: 'no-store' })
 
     if (!res.ok) {
         throw new Error('Failed to fetch data')
