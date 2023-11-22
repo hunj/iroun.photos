@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: prod.Dockerfile
+      args:
+        ENV_VARIABLE: ${ENV_VARIABLE}
+        NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+    volumes:
+      - /app/node_modules
+      - /app/.next
+      - ./web:/app
+    links:
+      - api
+
+  nginx:
+    extends:
+      file: docker-compose.yml
+      service: nginx
+
+  redis:
+    extends:
+      file: docker-compose.yml
+      service: redis
+
+  api:
+    extends:
+      file: docker-compose.yml
+      service: api
+
+  db:
+    extends:
+      file: docker-compose.yml
+      service: db
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
+  uploaded_files:
