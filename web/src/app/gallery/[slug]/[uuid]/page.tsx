@@ -4,7 +4,7 @@ import { Photo } from "../../../../types/global.d";
 
 
 async function getPhoto(gallerySlug: string, photoUuid: string) {
-    const res = await fetch(`http://api:8001/gallery/${gallerySlug}/${photoUuid}`)
+    const res = await fetch(`http://api:8001/gallery/${gallerySlug}/${photoUuid}`, { cache: 'no-store' })
 
     if (!res.ok) {
         throw new Error('Failed to fetch data')
@@ -32,7 +32,7 @@ export default async function Page({ params }: { params: { slug: string, uuid: s
                 </div>
             </div>
             <div className="container mx-auto h-full">
-                <Link href={ `http://localhost:8000` + photo.url } target="_blank">
+                <Link href={ photo.url } target="_blank">
                     <Image alt={photo.uuid} src={`http://nginx` + photo.url } width={2560} height={2560} style={{ height: "100%", width: "auto" }} />
                 </Link>
             </div>

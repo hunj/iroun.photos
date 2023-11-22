@@ -3,6 +3,9 @@
  */
 
 const nextConfig = {
+    generateBuildId: async () => {
+        return "deez_nuts"
+    },
     images: {
         remotePatterns: [
             {
@@ -13,6 +16,7 @@ const nextConfig = {
             },
         ],
     },
+    output: 'standalone',
 }
 
 module.exports = nextConfig

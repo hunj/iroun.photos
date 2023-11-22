@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default async function Page() {
-    const res = await fetch(`http://api:8001/gallery/`, { next: { tags: ['collection'] } })
+    const res = await fetch(`http://api:8001/gallery/`, { cache: 'no-store' })
     const data = await res.json()
     const albums = await data.map((album: Album) =>
         <div key={album.uuid} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
@@ -22,15 +22,15 @@ export default async function Page() {
     );
 
     return (
-
-
-
-
     <section className="py-4">
         <h1 className="font-bold text-lg text-center mb-3">Gallery</h1>
         <div className="container mx-auto">
+	    <div className="gap-4 flex flex-row flex-wrap">
             { albums }
+	    </div>
         </div>
     </section>
     );
 }
+
+export const dynamic = 'force-dynamic'
