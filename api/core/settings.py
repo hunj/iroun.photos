@@ -146,7 +146,7 @@ STATIC_URL = '/static/'
 
 # Uploaded files
 
-MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_ROOT = BASE_DIR.parent / 'uploads'
 MEDIA_URL = '/uploads/'
 
 

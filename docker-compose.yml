@@ -46,7 +46,7 @@ services:
     volumes:
       - ./api:/api
       - static_volume:/api/staticfiles
-      - uploaded_files:/api/uploads
+      - uploaded_files:/uploads
     expose:
       - 8001
     env_file:
