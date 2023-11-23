@@ -12,7 +12,8 @@ services:
     volumes:
       - /app/node_modules
       - /app/.next
-      - ./web:/app
+      - ./web/src:/app/src
+      - ./web/public:/app/public
     links:
       - api
     environment:
