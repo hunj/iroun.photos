@@ -2,9 +2,13 @@ version: '3.8'
 
 services:
   web:
-    build: ./web
+    build: 
+      context: ./web
+      args:
+        - BUILD_DEVELOPMENT=0  # set to 1 for dev mode
     restart: always
-    # command: yarn dev
+    # uncomment for dev mode
+    command: yarn dev
     ports:
       - 3000:3000
     depends_on:
@@ -16,8 +20,6 @@ services:
       - api
     env_file:
       - ./web/.env
-    environment:
-      NODE_ENV: production
 
   nginx:
     build: ./nginx
