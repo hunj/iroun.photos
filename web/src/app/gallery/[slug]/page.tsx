@@ -12,7 +12,7 @@ type Photo = {
 }
 
 async function getPhotos(gallerySlug: string) {
-    const res = await fetch(`http://api:8001/gallery/${gallerySlug}`, { cache: 'no-store' })
+    const res = await fetch(`http://${process.env.API_URL}:${process.env.API_PORT}` + `/gallery/${gallerySlug}`, { cache: 'no-store' })
 
     if (!res.ok) {
         throw new Error('Failed to fetch data')
@@ -30,14 +30,14 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     const galleryItems = await album.photos.map((photo: Photo) =>
         <div key={photo.uuid} className="mb-4">
-        <PhotoModal 
+        <PhotoModal
             gallerySlug={params.slug}
-            thumb={"http://nginx" + photo.thumbnail}
+            thumb={`http://${process.env.NGINX_URL}:${process.env.NGINX_PORT}` + photo.thumbnail}
             thumbWidth={512}
             thumbHeight={512}
             thumbAlt={photo.uuid}
             imageUuid={photo.uuid}
-            imageUrl={photo.url}
+            imageUrl={`http://${process.env.NGINX_URL}:${process.env.NGINX_PORT}` + photo.url}
             imageWidth={2560}
             imageHeight={2560}
         />
@@ -45,7 +45,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         // <div key={photo.uuid} className="mb-4">
         //     <Link href={`/gallery/${params.slug}/${photo.uuid}`}>
         //         <div className="h-100 w-100">
-        //             <Image className="hover:opacity-80" src={"http://nginx" + photo.thumbnail} alt={photo.uuid} width={512} height={512} style={{ height: "auto", width: "100%" }} />
+        //             <Image className="hover:opacity-80" src={`http://${process.env.NGINX_URL}:${process.env.NGINX_PORT}` + photo.thumbnail } alt={photo.uuid} width={512} height={512} style={{ height: "auto", width: "100%" }} />
         //         </div>
         //     </Link>
         // </div>

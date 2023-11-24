@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default async function Page() {
-    const res = await fetch(`http://api:8001/gallery/`, { cache: 'no-store' })
+    const res = await fetch(`http://${process.env.API_URL}:${process.env.API_PORT}` + `/gallery/`, { cache: 'no-store' })
     const data = await res.json()
     const albums = await data.map((album: Album) =>
         <div key={album.uuid} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <Link href={`/gallery/${album.slug}`}>
-                <Image className="rounded-t-lg" src={"http://nginx" + album.cover} alt={album.name} width={512} height={512} />
+                <Image className="rounded-t-lg" src={`http://${process.env.NGINX_URL}:${process.env.NGINX_PORT}` + album.cover} alt={album.name} width={512} height={512} />
             </Link>
             <div className="p-5">
                 <Link href={`/gallery/${album.slug}`}>

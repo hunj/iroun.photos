@@ -74,7 +74,7 @@ export default function PhotoModal ({
                                     <Dialog.Overlay className="absolute right-3 top-2 p-2 text-gray-200 drop-shadow" onClick={() => setModalOpen(false)}>
                                         <FontAwesomeIcon icon={faTimes} size="lg" />
                                     </Dialog.Overlay>
-                                    <Image src={"http://nginx" + imageUrl} alt={imageUuid} width={imageWidth} height={imageHeight} quality={100} className="w-full max-h-[90vh]" />
+                                    <Image src={imageUrl} alt={imageUuid} width={imageWidth} height={imageHeight} quality={100} className="w-full max-h-[90vh]" />
                                 </div>
                             </Dialog.Panel>
                         </div>

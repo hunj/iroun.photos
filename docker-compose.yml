@@ -14,6 +14,8 @@ services:
       - ./web/public:/app/public
     links:
       - api
+    env_file:
+      - ./web/.env
     environment:
       NODE_ENV: production
 
