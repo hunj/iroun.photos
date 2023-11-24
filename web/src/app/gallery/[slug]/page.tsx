@@ -58,7 +58,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     <h1 className="font-bold text-2xl">{album.name}</h1>
                 </div>
             </div>
-            <div className="gap-4 columns-2 lg:columns-3 xl:columns-4 2xl:columns-6 max-w-screen-2xl mx-auto px-3">
+            <div className="gap-4 columns-2 lg:columns-3 xl:columns-4 2xl:columns-6 max-w-screen-2xl mx-auto">
                 {galleryItems}
             </div>
         </section>
