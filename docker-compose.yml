@@ -4,8 +4,8 @@ services:
   web:
     build: 
       context: ./web
-      args:
-        - BUILD_DEVELOPMENT=0  # set to 1 for dev mode
+      # args:
+      #   - BUILD_DEVELOPMENT=development
     restart: always
     # command: yarn dev  # uncomment for dev mode
     ports:

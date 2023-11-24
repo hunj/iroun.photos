@@ -5,13 +5,8 @@ FROM node:alpine as build
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # determine whether to run yarn build or yarn dev from argument - passed from docker-compose.yml
-ARG BUILD_DEVELOPMENT
-
-# if --build-arg BUILD_DEVELOPMENT=1, set NODE_ENV to 'development' or set to null otherwise.
-ENV NODE_ENV=${BUILD_DEVELOPMENT:+development}
-
-# if NODE_ENV is null, set it to 'production' (or leave as is otherwise).
-ENV NODE_ENV=${NODE_ENV:-production}
+ARG BUILD_DEVELOPMENT=production
+ENV NODE_ENV=$BUILD_DEVELOPMENT
 
 # Create the directory on the node image 
 # where our Next.js app will live
