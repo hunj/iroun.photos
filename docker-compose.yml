@@ -7,8 +7,7 @@ services:
       args:
         - BUILD_DEVELOPMENT=0  # set to 1 for dev mode
     restart: always
-    # uncomment for dev mode
-    command: yarn dev
+    # command: yarn dev  # uncomment for dev mode
     ports:
       - 3000:3000
     depends_on:
