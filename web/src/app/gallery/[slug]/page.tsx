@@ -54,11 +54,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return (
         <section className="pb-8">
             <div className="bg-gray-100 py-8 mb-3">
-                <div className="container py-12 mx-auto text-center">
+                <div className="py-12 mx-auto text-center">
                     <h1 className="font-bold text-2xl">{album.name}</h1>
                 </div>
             </div>
-            <div className="gap-4 columns-2 lg:columns-3 xl:columns-4 2xl:container mx-auto">
+            <div className="gap-4 columns-2 lg:columns-3 xl:columns-4 2xl:columns-6 max-w-screen-2xl mx-auto px-3">
                 {galleryItems}
             </div>
         </section>

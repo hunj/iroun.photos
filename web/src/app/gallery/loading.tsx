@@ -3,9 +3,9 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 export default function Loading() {
     return (
-        <section className="h-full">
-            <div className="mx-auto">
-                <FontAwesomeIcon icon={faSpinner} />
+        <section className="p-4">
+            <div className="mx-auto text-center text-xl">
+                <FontAwesomeIcon className="animate-spin" icon={faSpinner} size="2xl" />
             </div>
         </section>
     );
