@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const Sidebar = ({
     isOpen,
@@ -8,48 +10,46 @@ const Sidebar = ({
     toggle: () => void;
 }): JSX.Element => {
     return (
-        <>
-            <div
-                className="sidebar-container fixed w-full h-full overflow-hidden justify-center bg-white grid pt-[120px] left-0 z-10"
-                style={{
-                    opacity: `${isOpen ? "1" : "0"}`,
-                    top: ` ${isOpen ? "0" : "-100%"}`,
-                }}
-            >
-                <button className="absolute right-0 p-5" onClick={toggle}>
-                    {/* Close icon */}
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="48"
-                        height="48"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            fill="currentColor"
-                            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
-                        />
-                    </svg>
-                </button>
+        <div
+            className="fixed w-56 max-w-full py-3 overflow-hidden justify-center bg-white grid right-2 z-10 rounded-xl shadow-lg"
+            style={{
+                opacity: `${isOpen ? "1" : "0"}`,
+                top:     `${isOpen ? "0.5rem" : "-100%"}`,
+            }}
+        >
+            <button className="absolute right-0 p-3" onClick={toggle}>
+                <FontAwesomeIcon icon={faTimes} />
+            </button>
 
-                <ul className="sidebar-nav text-center leading-relaxed text-xl">
-                    <li>
-                        <Link href="/about" onClick={toggle}>
-                            <p>About Us</p>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/services" onClick={toggle}>
-                            <p>Services</p>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/contacts" onClick={toggle}>
-                            <p>Contacts</p>
-                        </Link>
-                    </li>
-                </ul>
-            </div>
-        </>
+            <ul className="text-center leading-relaxed w-full tracking-wide space-y-2">
+                <li>
+                    <Link href="/about" onClick={toggle}>
+                        About
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/photography" onClick={toggle}>
+                        Photography
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/gallery" onClick={toggle}>
+                        Gallery
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/contact" onClick={toggle}>
+                        Contact
+                    </Link>
+                </li>
+                <li>
+                    <Link href="https://instagram.com/iroun.photos" target="_blank" onClick={toggle}>
+                        Instagram
+                    </Link>
+                </li>
+            </ul>
+        </div>
+
     );
 };
 
