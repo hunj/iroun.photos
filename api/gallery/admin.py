@@ -73,7 +73,7 @@ class PhotoAdmin(admin.ModelAdmin):
 class AlbumAdmin(admin.ModelAdmin):
     form = AlbumAdminForm
     list_display = ['name', 'preview', 'upload',]
-    fields = ["name", "published", "cover",]
+    fields = ["name", "published", "cover", "date"]
     inlines = [PhotoInline]
 
     @admin.display()
