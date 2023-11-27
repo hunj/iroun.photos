@@ -28,11 +28,6 @@ const Sidebar = ({
                     </Link>
                 </li>
                 <li>
-                    <Link href="/photography" onClick={toggle}>
-                        Photography
-                    </Link>
-                </li>
-                <li>
                     <Link href="/gallery" onClick={toggle}>
                         Gallery
                     </Link>

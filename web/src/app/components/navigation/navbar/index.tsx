@@ -22,11 +22,6 @@ const Navbar = ({ toggle }: { toggle: () => void }) => {
                             </Link>
                         </li>
                         <li>
-                            <Link href="/photography" className="bg-teal-400 hover:bg-teal-500 text-white p-4">
-                                    Photography
-                            </Link>
-                        </li>
-                        <li>
                             <Link href="/gallery" className="bg-teal-400 hover:bg-teal-500 text-white p-4">
                                     Gallery
                             </Link>
