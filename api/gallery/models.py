@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
+from datetime import date
+
 from common.models import BaseModel
 from gallery.helpers import (
     photo_upload_directory_name,
@@ -10,6 +12,7 @@ from gallery.helpers import (
 
 class Album(BaseModel):
     name = models.CharField(max_length=256)
+    date = models.DateField(default=date.today)
     published = models.BooleanField(default=False)
     cover = models.OneToOneField('Photo', related_name='cover', on_delete=models.SET_NULL, null=True, blank=True)
     slug = models.SlugField(default="", null=False)

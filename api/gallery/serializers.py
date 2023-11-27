@@ -36,7 +36,7 @@ class AlbumListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Album
-        fields = ['uuid', 'name', 'cover', 'slug', 'created_at', 'updated_at']
+        fields = ['uuid', 'name', 'cover', 'slug', 'date', 'created_at', 'updated_at']
 
 
 class AlbumRetrieveSerializer(serializers.ModelSerializer):
@@ -44,4 +44,4 @@ class AlbumRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Album
-        fields = ['uuid', 'name', 'cover', 'created_at', 'updated_at', 'photos']
+        fields = ['uuid', 'name', 'cover', 'date', 'created_at', 'updated_at', 'photos']
