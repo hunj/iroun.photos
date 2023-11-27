@@ -16,6 +16,7 @@ class Album(BaseModel):
     published = models.BooleanField(default=False)
     cover = models.OneToOneField('Photo', related_name='cover', on_delete=models.SET_NULL, null=True, blank=True)
     slug = models.SlugField(default="", null=False)
+    description = models.TextField(default="", blank=True)
 
     def __str__(self):
         return self.name
