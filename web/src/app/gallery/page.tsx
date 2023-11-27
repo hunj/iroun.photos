@@ -28,7 +28,7 @@ export default async function Page() {
                     {/* <p className="mb-3 text-sm md:text-baseline">
                         Lorem Ipsum dolor sit amet
                     </p> */}
-                    <p className="mt-auto text-xs sm:text-sm text-gray-400 ">{new Date(album.created_at).toLocaleDateString()}</p>
+                    <p className="mt-auto text-xs sm:text-sm text-gray-400">{new Date(album.date).toLocaleDateString()}</p>
                 </div>
             </div>
         </div>
