@@ -4,7 +4,8 @@ export type Album = {
     name: string;
     slug: string;
     cover: string;
-    created_at: string;
+    date: string;
+    description: string;
 }
 
 export type Photo = {
