@@ -5,7 +5,7 @@ from gallery.serializers import AlbumListSerializer, AlbumRetrieveSerializer, Ph
 
 class AlbumListAPIView(ListAPIView):
     model = Album
-    queryset = Album.objects.filter(published=True)
+    queryset = Album.objects.filter(published=True).order_by('-date')
     serializer_class = AlbumListSerializer
 
 
