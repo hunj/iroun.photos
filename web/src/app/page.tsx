@@ -9,7 +9,7 @@ export default function Page() {
           <div className={[style.splash, style.splash_1].join(' ')}>
             <div className="opacity-0 group-hover:opacity-100 duration-300 absolute top-3 inset-x-0 text-white text-center drop-shadow">
               <h2 className="font-bold tracking-tight text-2xl md:text-4xl">Cosplay</h2>
-              <p className="md:text-lg">Recreate original media</p>
+              <p className="text-lg">Recreate original media</p>
             </div>
           </div>
         </div>
